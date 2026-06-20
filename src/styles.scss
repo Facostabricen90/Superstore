@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+// ─── Variables ───
+:root {
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-alt: #F1F5F9;
+  --border: #E2E8F0;
+  --border-focus: #6366F1;
+  --text: #1E293B;
+  --text-muted: #64748B;
+  --accent: #6366F1;
+  --accent-soft: #EEF2FF;
+  --accent-hover: #4F46E5;
+  --mint: #A7F3D0;
+  --mint-soft: #ECFDF5;
+  --mint-text: #065F46;
+  --lavender: #C4B5FD;
+  --lavender-soft: #EDE9FE;
+  --lavender-txt: #5B21B6;
+  --peach: #FED7AA;
+  --peach-text: #9A3412;
+  --lemon: #FEF08A;
+  --lemon-text: #854D0E;
+  --rose: #FECDD3;
+  --rose-soft: #FFF1F2;
+  --rose-text: #9F1239;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 10px 25px rgba(99, 102, 241, 0.12);
+  --font: 'Inter', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+// ─── Animations ───
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.03); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

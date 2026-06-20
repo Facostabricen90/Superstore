@@ -1,0 +1,37 @@
+<div class="form-container">
+  <div class="page-header">
+    <div class="page-icon" style="background: linear-gradient(135deg, var(--lavender-soft), var(--lavender))">👤</div>
+    <div>
+      <h2>Agregar Regional Manager</h2>
+      <p class="subtitle">Registra un nuevo manager en el sistema</p>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-card">
+      <div class="form-row">
+        <div class="field">
+          <label for="regionalManager">Regional Manager</label>
+          <input id="regionalManager" type="text" formControlName="regionalManager" placeholder="Ej. John Smith" />
+        </div>
+        <div class="field">
+          <label for="region">Region</label>
+          <select id="region" formControlName="region">
+            <option value="">Seleccionar...</option>
+            @for (reg of regions; track reg) {
+              <option [value]="reg">{{ reg }}</option>
+            }
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button type="button" class="btn-secondary" (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="btn-primary" [disabled]="enviando()">
+        @if (enviando()) { Guardando... } @else { 💾 Guardar }
+      </button>
+    </div>
+  </form>
+</div>

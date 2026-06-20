@@ -1,0 +1,14 @@
+<a
+  [routerLink]="to()"
+  routerLinkActive="active"
+  [routerLinkActiveOptions]="{ exact: exact() }"
+  class="nav-item"
+  [class.primary]="isPrimary()"
+  [style.--item-color]="color()"
+  [style.--item-color-text]="colorText()"
+>
+  @if (icon()) {
+    <span class="icon">{{ icon() }}</span>
+  }
+  {{ label() }}
+</a>

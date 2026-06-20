@@ -1,0 +1,34 @@
+<div class="form-container">
+  <div class="page-header">
+    <div class="page-icon" style="background: linear-gradient(135deg, var(--rose-soft), var(--rose))">↩</div>
+    <div>
+      <h2>Registrar Devolución</h2>
+      <p class="subtitle">Asocia una orden con su estado de devolución</p>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-card">
+      <div class="form-row">
+        <div class="field">
+          <label for="orderId">Order ID</label>
+          <input id="orderId" type="text" formControlName="orderId" placeholder="Ej. CA-2019-152156" />
+        </div>
+        <div class="field">
+          <label for="returned">Returned</label>
+          <select id="returned" formControlName="returned">
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button type="button" class="btn-secondary" (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="btn-primary" [disabled]="enviando()">
+        @if (enviando()) { Registrando... } @else { 💾 Registrar Devolución }
+      </button>
+    </div>
+  </form>
+</div>

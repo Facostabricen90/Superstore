@@ -1,0 +1,50 @@
+<div class="section-header">
+  <div class="section-title">
+    <div class="section-icon rose">🔄</div>
+    <div>
+      <h2>Devoluciones</h2>
+      <p class="subtitle">Listado de todas las devoluciones registradas</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <a routerLink="/returns/nuevo" class="btn-new">↩ Registrar Devolución</a>
+    <button class="btn-refresh" (click)="cargarDatos()" [disabled]="cargando()">
+      @if (cargando()) {
+        <span class="spinner-inline"></span> Cargando...
+      } @else {
+        🔄 Actualizar
+      }
+    </button>
+  </div>
+</div>
+
+@if (cargando()) {
+  <div class="loading-state">
+    <div class="spinner"></div>
+    <p>Cargando devoluciones...</p>
+  </div>
+} @else if (returns().length === 0) {
+  <div class="empty-state">
+    <div class="empty-icon">📭</div>
+    <p>Sin devoluciones registradas</p>
+  </div>
+} @else {
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Returned</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (ret of returns(); track ret.orderId) {
+          <tr>
+            <td class="bold">{{ ret.orderId }}</td>
+            <td><span class="badge rose">{{ ret.returned }}</span></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

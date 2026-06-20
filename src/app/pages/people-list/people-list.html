@@ -1,0 +1,50 @@
+<div class="section-header">
+  <div class="section-title">
+    <div class="section-icon lavender">👥</div>
+    <div>
+      <h2>Regional Managers</h2>
+      <p class="subtitle">Listado de todos los regional managers</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <a routerLink="/people/nuevo" class="btn-new">+ Agregar Manager</a>
+    <button class="btn-refresh" (click)="cargarDatos()" [disabled]="cargando()">
+      @if (cargando()) { 🔄 Cargando... } @else { 🔄 Actualizar }
+    </button>
+  </div>
+</div>
+
+@if (cargando()) {
+  <div class="loading-state">
+    <div class="spinner"></div>
+    <p>Cargando managers...</p>
+  </div>
+} @else if (people().length === 0) {
+  <div class="empty-state">
+    <div class="empty-icon">👤</div>
+    <p>Sin regional managers registrados</p>
+  </div>
+} @else {
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Regional Manager</th>
+          <th>Region</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (person of people(); track person.regionalManager) {
+          <tr>
+            <td class="bold">{{ person.regionalManager }}</td>
+            <td>
+              <span class="badge" [ngClass]="getRegionBadgeClass(person.region)">
+                {{ person.region }}
+              </span>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
