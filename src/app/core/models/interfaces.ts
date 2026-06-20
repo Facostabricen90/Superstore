@@ -1,8 +1,8 @@
 export interface Orders {
   rowId: number;
   orderId: string;
-  orderDate: number;
-  shipDate: number;
+  orderDate: number | string;
+  shipDate: number | string;
   shipMode: string;
   customerId: string;
   customerName: string;

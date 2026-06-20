@@ -73,8 +73,8 @@ export class OrderForm implements OnInit {
       const v = this.form.value;
       await this.api.addOrderFetch({
         orderId:       v.orderId ?? '',
-        orderDate:     Number(v.orderDate),
-        shipDate:      Number(v.shipDate),
+        orderDate:     v.orderDate ?? '',
+        shipDate:      v.shipDate ?? '',
         shipMode:      v.shipMode ?? '',
         customerId:    v.customerId ?? '',
         customerName:  v.customerName ?? '',
