@@ -73,8 +73,8 @@ export class OrderForm implements OnInit {
       const v = this.form.value;
       await this.api.addOrderFetch({
         orderId:       v.orderId ?? '',
-        orderDate:     v.orderDate ?? '',
-        shipDate:      v.shipDate ?? '',
+        orderDate:     this.toDMY(v.orderDate),
+        shipDate:      this.toDMY(v.shipDate),
         shipMode:      v.shipMode ?? '',
         customerId:    v.customerId ?? '',
         customerName:  v.customerName ?? '',
@@ -106,5 +106,12 @@ export class OrderForm implements OnInit {
 
   cancelar() {
     this.router.navigate(['/']);
+  }
+
+  private toDMY(value: string | null | undefined): string {
+    if (!value) return '';
+    const [y, m, d] = value.split('-');
+    if (!y || !m || !d) return value;
+    return `${Number(d)}/${Number(m)}/${y}`;
   }
 }
